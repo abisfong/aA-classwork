@@ -11,11 +11,6 @@ class KnightPathFinder
   
   def self.valid_move?(pos)
     return false if pos.all? { |coor| coor.between?(0,7) }
-
-    x = (@pos[0] - pos[0]).abs
-    y = (@pos[1] - pos[1]).abs
-  
-    (x == 2 && y == 1) || (x == 1 && y == 2)
   end
 
   def initialize(pos)
