@@ -1,4 +1,4 @@
-require_relative "00_tree_node"
+require_relative "poly_tree_node"
 
 class KnightPathFinder
   @@moves = [[-2,1],[-1,2],[1,2],[2,1],[2,-1],[1,-2],[-1,-2],[-2,-1]]
