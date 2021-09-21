@@ -9,7 +9,17 @@ class Manager < Employee
   end
   
   def bonus(multiplier)
-    multiplier * @employees.inject(0) { |acc, employee| acc + employee.salary }
+    multiplier * self.subemployee_salaries
+  end
+
+  def subemployee_salaries
+    self.employees.inject(0) do |acc, employee|
+      if employee.is_a?(Manager)
+        acc + employee.subemployee_salaries + employee.salary
+      else
+        acc + employee.salary
+      end
+    end
   end
 end
 
@@ -18,7 +28,7 @@ darren = Manager.new("Darren", "TA Manager", 78000, ned)
 david = Employee.new("David", "TA", 10000, darren)
 shawna = Employee.new("Shawna", "TA", 12000, darren)
 
-ned.employees = [darren, david, shawna]
+ned.employees = [darren]
 darren.employees = [david, shawna]
 
 p ned.bonus(5)
