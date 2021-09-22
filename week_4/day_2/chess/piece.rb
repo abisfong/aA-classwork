@@ -2,7 +2,7 @@ class Piece
   attr_accessor :pos
   attr_reader :color
 
-  def initialize(color, board, pos=nil)
+  def initialize(color=nil, board=nil, pos=nil)
     @color = color
     @board = board
     @pos = pos
@@ -32,6 +32,11 @@ class Piece
   end
 
   def symbol
+    :X #for testing only
+  end
+
+  def inspect
+    "#{self.symbol}"
   end
 
   private 

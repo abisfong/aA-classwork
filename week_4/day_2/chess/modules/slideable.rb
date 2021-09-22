@@ -35,11 +35,14 @@ module Slideable
     moves = []
 
     next_pos = [@pos.first + dy, @pos.last + dx]
-    while @board[next_pos].empty? && @board.valid_pos?(next_pos)
+    p next_pos
+    # p @board[next_pos].pos
+    while @board.valid_pos?(next_pos) && @board[next_pos].empty?
       moves << next_pos
       next_pos = [next_pos.first + dy, next_pos.last + dx]
+      p next_pos
     end
-    moves << next_pos if self.color != @board[next_pos].color && @board.valid_pos?(next_pos)
+    moves << next_pos if @board.valid_pos?(next_pos) && self.color != @board[next_pos].color
 
     moves
   end

@@ -1,18 +1,18 @@
 require_relative 'piece'
 require_relative 'modules/slideable'
 
-class Queen < Piece
+class Rook < Piece
   #@color, @board, @pos 
 
   include Slideable
 
   def symbol
-    :Q
+    :R
   end
 
   protected
 
   def move_dirs
-    [*horizontal_dirs, *diagonal_dirs]
+    horizontal_dirs 
   end
 end

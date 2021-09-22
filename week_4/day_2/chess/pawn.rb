@@ -9,6 +9,10 @@ class Pawn < Piece
     side_attacks << moves
   end
 
+  def symbol
+    :P 
+  end
+  
   private
 
   def at_start_row?
@@ -16,6 +20,7 @@ class Pawn < Piece
     return true if @pos.first == 6 && @color == :white 
     false
   end
+  
 
   def forward_dir
     #returns 1 or -1
