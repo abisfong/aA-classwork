@@ -5,10 +5,10 @@ class NullPiece < Piece
   include Singleton
 
   def color
-    
+    nil
   end
 
   def symbol
-    
+    nil
   end
 end
