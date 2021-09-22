@@ -20,7 +20,6 @@ class Board
     raise Exception.new "No available piece" if self[start_pos].empty?
     raise Exception.new "Invalid move" unless self[end_pos].empty? #DONE - need to readdress when null pieces come into play
 
-    debugger
     self[start_pos].pos, self[end_pos].pos = end_pos, start_pos
     #access the piece (on both start and end)
     self[start_pos], self[end_pos] = self[end_pos], self[start_pos]
