@@ -14,7 +14,7 @@ class NullPiece < Piece
   end
 
   def inspect
-    "[ ]"
+    "_"
   end
 
   def empty?

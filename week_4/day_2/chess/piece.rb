@@ -28,8 +28,8 @@ class Piece
     # end
   end
 
-  def pos=(val)
-  end
+  # def pos=(val) #can be deleted
+  # end
 
   def symbol
     :X #for testing only

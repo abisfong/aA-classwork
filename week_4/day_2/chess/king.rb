@@ -4,7 +4,7 @@ require_relative 'modules/stepable'
 class King < Piece
   #@color, @board, @pos 
 
-  include Slideable
+  include Stepable
 
   def symbol
     :K
