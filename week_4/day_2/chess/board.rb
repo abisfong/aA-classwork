@@ -14,6 +14,10 @@ class Board
     self[start_pos], self[end_pos] = self[end_pos], self[start_pos]
   end
 
+  def valid_pos?(pos)
+    pos.all? { |coord| coord.between?(0, 7) }
+  end
+
   def [](pos)
     r, c = pos
     @rows[r][c]

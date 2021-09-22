@@ -21,6 +21,7 @@ module Slideable
   end
   
   private
+
   HORIZONTAL_DIRS = [ [0,1], [1,0], [0,-1], [-1,0] ]
   DIAGONAL_DIRS = [ [1,1], [1,-1], [-1,1], [-1,-1] ]
   
@@ -34,10 +35,11 @@ module Slideable
     moves = []
 
     next_pos = [@pos.first + dy, @pos.last + dx]
-    while @board[next_pos].is_a?(NullPiece)
+    while @board[next_pos].empty?
       moves << next_pos
       next_pos = [next_pos.first + dy, next_pos.last + dx]
     end
+    moves << next_pos if self.color != @board[next_pos].color
 
     moves
   end

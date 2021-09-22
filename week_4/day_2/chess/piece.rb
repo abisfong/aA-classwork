@@ -1,5 +1,5 @@
 class Piece
-  def initialize(color, board, pos=[])
+  def initialize(color, board, pos=nil)
     @color = color
     @board = board
     @pos = pos
@@ -10,6 +10,7 @@ class Piece
   end
 
   def empty?
+    false
   end
 
   def valid_moves
