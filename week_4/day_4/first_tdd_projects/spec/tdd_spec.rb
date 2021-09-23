@@ -1,8 +1,10 @@
+require "tdd"
+
 describe Array do 
   #remove dups
   describe "#my_uniq" do
   #[1, 2, 1, 3, 3].uniq # => [1, 2, 3]
-  let(:arr) {[1, 2, 1, 3, 3]}
+    let(:arr) {[1, 2, 1, 3, 3]}
     context "if array is not empty" do
       it "should return unique elements" do
         expect(arr.my_uniq).to eq([1, 2, 3])
@@ -14,4 +16,24 @@ describe Array do
         expect([].my_uniq).to eq([])
       end
     end
+  end
+
+  describe "#two_sum" do
+    context "if array is not empty" do
+      it "should return all pairs of positions where the corresponding elements sum to 0" do
+        expect([-1, 0, 2, -2, 1].two_sum).to eq([[0, 4], [2, 3]])
+      end
+
+      it "should find pairs with same element" do
+        expect([5, -5, -5].two_sum).to eq([[0, 1], [0, 2]])
+      end
+
+      it "" do
+      end
+    end
+    
+    context "if array is empty" do
+
+    end
+  end
 end
