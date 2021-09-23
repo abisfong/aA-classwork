@@ -28,12 +28,26 @@ describe Array do
         expect([5, -5, -5].two_sum).to eq([[0, 1], [0, 2]])
       end
 
-      it "" do
+      it "should return empty array if no pair found" do
+        expect([1, 2, 7, 4].two_sum).to eq([])
       end
     end
     
     context "if array is empty" do
-
+      it "should return empty array " do
+        expect([].two_sum).to eq([])
+      end
     end
   end
+
+  describe "#my_transpose" do
+    context "if matrix is not empty" do
+      it
+
+    end
+
+    context "if matrix is empty" do
+    end
+
+
 end
