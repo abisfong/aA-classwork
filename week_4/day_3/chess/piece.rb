@@ -9,7 +9,7 @@ class Piece
   end
 
   def to_s
-    "#{@color}, #{@pos}"
+    "#{self.symbol}"
   end
 
   def empty?

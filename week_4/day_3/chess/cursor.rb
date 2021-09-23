@@ -1,4 +1,5 @@
 require "io/console"
+require_relative 'board'
 
 KEYMAP = {
   " " => :space,
@@ -32,7 +33,7 @@ MOVES = {
 
 class Cursor
 
-  attr_reader :cursor_pos, :board
+  attr_reader :cursor_pos, :board, :selected
 
   def initialize(cursor_pos, board)
     @cursor_pos = cursor_pos
@@ -42,11 +43,11 @@ class Cursor
 
   def get_input
     key = KEYMAP[read_char]
-    handle_key(key)
+    handle_key(key) #will toggle return position if user presses return/space
   end
 
   def toggle_selected
-
+    @selected = !@selected
   end
 
   private
@@ -83,6 +84,7 @@ class Cursor
   def handle_key(key)
     case key
     when :return, :space
+      toggle_selected
       @cursor_pos
     when :left, :right, :up, :down
       update_pos(MOVES[key])
@@ -93,7 +95,12 @@ class Cursor
   end
   
   def update_pos(diff)
-    @cursor_pos.first += diff.first
-    @cursor_pos.last += diff.last
+    possible_pos = []
+    possible_pos << @cursor_pos.first + diff.first
+    possible_pos << @cursor_pos.last + diff.last
+
+    if @board.valid_pos?(possible_pos)
+      @cursor_pos = possible_pos
+    end
   end
 end

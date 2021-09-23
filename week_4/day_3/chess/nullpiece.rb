@@ -10,7 +10,7 @@ class NullPiece < Piece
   end
 
   def symbol
-    nil
+    " "
   end
 
   def inspect

@@ -1,4 +1,5 @@
 require_relative 'board'
+require_relative 'piece'
 require_relative 'modules/stepable.rb'
 
 class Pawn < Piece
