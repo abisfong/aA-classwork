@@ -42,12 +42,26 @@ describe Array do
 
   describe "#my_transpose" do
     context "if matrix is not empty" do
-      it
+      it "transposes the matrix" do
+        expect{[2, 3].my_transpose}.to eq([[2], [3]])
 
+        expect([
+          [0, 1, 2],
+          [3, 4, 5],
+          [6, 7, 8]
+        ].my_transpose
+        ).to eq([
+          [0, 3, 6],
+          [1, 4, 7],
+          [2, 5, 8]
+        ])
+      end
     end
 
     context "if matrix is empty" do
+      it "returns an empty array" do
+        expect([].my_transpose).to eq([])
+      end
     end
-
-
+  end
 end
