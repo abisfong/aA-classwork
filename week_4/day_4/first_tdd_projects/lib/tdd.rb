@@ -18,9 +18,9 @@ class Array
   end
 
   def my_transpose
-    return self if self.empty?
-    raise "Invalid matrix" if self.length != self[0].length
-    
+    raise "Invalid matrix" if self.empty?
+    raise "Invalid matrix" unless self.all? {|ele| ele.is_a?(Array)} # [] and 2D array
+    raise "Invalid matrix" if self.any? {|ele| ele.length != self[0].length}
     new_matrix = Array.new(self.length) { Array.new(self.length) }
     (0...self.length).each do |i|
       (0...self.length).each do |j|
@@ -29,4 +29,5 @@ class Array
     end
     new_matrix
   end
+
 end

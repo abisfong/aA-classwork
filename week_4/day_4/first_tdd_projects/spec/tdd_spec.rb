@@ -42,9 +42,20 @@ describe Array do
 
   describe "#my_transpose" do
     context "if matrix is not empty" do
-      it "transposes the matrix" do
-        expect{[2, 3].my_transpose}.to eq([[2], [3]])
+      it "should raise error if all rows are not the same length" do
+        expect{[
+          [0, 1, 2],
+          [3, 4],
+          [6, 7, 8]
+        ].my_transpose
+        }.to raise_error("Invalid matrix")
+      end
 
+      it "should raise error if it's not a 2D matrix" do
+        expect{[1,2,3].my_transpose}.to raise_error("Invalid matrix")
+      end
+
+      it "transposes the matrix" do
         expect([
           [0, 1, 2],
           [3, 4, 5],
@@ -56,11 +67,11 @@ describe Array do
           [2, 5, 8]
         ])
       end
-    end
+  end
 
     context "if matrix is empty" do
-      it "returns an empty array" do
-        expect([].my_transpose).to eq([])
+      it "raise error" do
+        expect{[].my_transpose}.to raise_error("Empty matrix")
       end
     end
   end
