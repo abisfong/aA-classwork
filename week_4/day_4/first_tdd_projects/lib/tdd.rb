@@ -18,7 +18,7 @@ class Array
   end
 
   def my_transpose
-    raise "Invalid matrix" if self.empty?
+    raise "Empty matrix" if self.empty?
     raise "Invalid matrix" unless self.all? {|ele| ele.is_a?(Array)} # [] and 2D array
     raise "Invalid matrix" if self.any? {|ele| ele.length != self[0].length}
     new_matrix = Array.new(self.length) { Array.new(self.length) }
@@ -30,4 +30,21 @@ class Array
     new_matrix
   end
 
+end
+
+def stock_picker(stock_prices)
+  raise "No stock price information" if stock_prices.empty?
+  raise "Not enough stock price information" if stock_prices.length == 1
+
+  new_arr = [0, 1, stock_prices[1] - stock_prices[0]]
+  (0...stock_prices.length).each do |i|
+    (i+1...stock_prices.length).each do |j|
+      if stock_prices[j] - stock_prices[i] > new_arr.last
+        new_arr = [i, j, stock_prices[j] - stock_prices[i]] 
+      end
+    end
+  end
+  
+  new_arr.pop
+  new_arr
 end

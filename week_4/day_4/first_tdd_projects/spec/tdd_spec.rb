@@ -76,3 +76,21 @@ describe Array do
     end
   end
 end
+
+describe "#stock_picker" do
+  context "if the argument array is not empty" do
+    it "should raise error if argument array length is 1" do
+      expect{stock_picker([10])}.to raise_error("Not enough stock price information")
+    end
+    
+    it "should return the most most profitable pair of days" do
+      expect(stock_picker([30, 40, 20, 15, 35])).to eq([3, 4])
+    end
+  end
+
+  context "if the argument array is empty" do
+    it "should raise error" do
+      expect{stock_picker([])}.to raise_error("No stock price information")
+    end
+  end
+end
