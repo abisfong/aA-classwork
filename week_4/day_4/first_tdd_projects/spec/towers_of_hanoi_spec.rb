@@ -1,6 +1,9 @@
+require "towers_of_hanoi"
+
 describe TowerOfHanoi do
+  subject(:toa) {TowerOfHanoi.new(8)}
+
   describe "#initialize" do
-    subject(:toa) {TowerOfHanoi.new(8)}
     it "should accept size as an argument" do
       expect(toa.size).to eq(8)
     end
@@ -13,6 +16,12 @@ describe TowerOfHanoi do
     end
   end
 
-  
+  describe "#move_discs" do
+    it "gets start pile and end pile position" do
+      res = toa.move_discs
+      expect(res.length == 2 && res.all? {|pos| pos.is_a?(Integer)}).to eq(true)
+      expect(toa.move_discs).to receive(:gets)
+    end
+  end  
 end
 
