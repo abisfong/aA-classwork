@@ -17,6 +17,43 @@ def my_min(arr) # O(n)
 end
 
 # my_min test
-list = [ 0, 3, 5, 4, -5, 10, 1, 90 ]
-p my_min(list)
+# list = [ 0, 3, 5, 4, -5, 10, 1, 90 ]
+# p my_min(list)
 
+
+# def largest_contiguous_subsum(list)
+
+#   subsets = []
+#   (0...list.length).each do |i|
+#     (i...list.length).each do |j|
+#       subsets << list[i..j]
+#     end
+#   end
+
+#   subsets.inject do |acc, ele|
+#     acc.sum > ele.sum ? acc : ele
+#   end.sum
+
+# end
+
+list = [5, 3, -7]
+# p largest_contiguous_subsum(list) # => 8
+
+def largest_contiguous_subsum(list)
+  max_sum = list.first
+  current = 0
+  (0...list.length).each do |i|
+      current += list[i]
+      if max_sum < current
+        max_sum = current
+      end
+      if current <= 0
+        current = 0
+      end
+    end
+  
+  max_sum
+end
+
+ list = [-5, -1, -3]
+p largest_contiguous_subsum(list) # => 8
