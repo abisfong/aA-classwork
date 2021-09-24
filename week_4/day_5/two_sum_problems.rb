@@ -30,5 +30,21 @@ def bsearch(arr, target_sum)
   end
 end
 
+
 arr = [0, 1, 5, 7]
-p okay_two_sum?(arr, 8)
+# p okay_two_sum?(arr, target_sum)
+require "set"
+def two_sum?(arr, target_sum)
+  nums = Set.new
+  arr.each do |ele|
+    nums.add(ele)
+  end
+  arr.each do |ele|
+    return true if nums.include?(target_sum - ele)
+  end
+  false
+end
+
+arr = [0, 1, 5, 7]
+p two_sum?(arr, 9)
+
