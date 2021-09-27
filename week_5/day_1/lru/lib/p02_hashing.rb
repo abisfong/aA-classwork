@@ -3,12 +3,15 @@ class Integer
 end
 
 class Array
-  def hash
+  def my_hash
+    return nil.hash if self.length == 0
+    self.inject { |acc, el| acc.hash ^ el.hash }
   end
 end
 
 class String
   def hash
+    self.chars.my_hash
   end
 end
 
