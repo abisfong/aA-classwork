@@ -10,6 +10,7 @@ class HashSet
     if !include?(key)
       self[key] << key
       @count += 1
+      resize! if num_buckets <= @count
     end
   end
 
@@ -18,6 +19,10 @@ class HashSet
   end
 
   def remove(key)
+    if include?(key)
+      self[key].delete(key)
+      @count -= 1
+    end
   end
 
   private
@@ -32,5 +37,10 @@ class HashSet
   end
 
   def resize!
+    new_store = Array.new(num_buckets*2) {Array.new}
+    @store.flatten.each do |num|
+      new_store[num % new_store.length].push(num)
+    end
+    @store = new_store
   end
 end
