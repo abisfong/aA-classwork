@@ -9,9 +9,10 @@ class Array
   end
 end
 
+
 class String
-  def hash
-    self.chars.my_hash
+  def my_str_hash
+    self.chars.map(&:ord).my_hash
   end
 end
 
@@ -19,6 +20,8 @@ class Hash
   # This returns 0 because rspec will break if it returns nil
   # Make sure to implement an actual Hash#hash method
   def hash
-    0
+    self.values.sort.map(&:my_str_hash).my_hash ^ self.keys.sort.my_hash
   end
 end
+
+#{a => [1,2,3], b =>[2,3,1]}
