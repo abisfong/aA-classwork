@@ -76,5 +76,11 @@ end
 def united_we_stand
   # Show the countries that have a name that includes the word 'United'
   execute(<<-SQL)
+    SELECT
+      countries.name
+    FROM 
+      countries
+    WHERE
+      countries.name ILIKE 'united%'
   SQL
 end
