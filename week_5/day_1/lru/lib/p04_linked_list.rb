@@ -1,4 +1,5 @@
 # require 'enumerable'
+require 'byebug'
 class Node
   attr_reader :key
   attr_accessor :val, :next, :prev
@@ -56,6 +57,7 @@ class LinkedList
   def append(key, val)
     new_node = Node.new(key, val)
     new_node.prev = @tail.prev
+    new_node.next = @tail
     @tail.prev = new_node
     @head.next = new_node if empty?
   end
@@ -67,6 +69,14 @@ class LinkedList
   end
 
   def each
+    # debugger
+    ptr = @head.next
+    until ptr.next == @tail
+      yield ptr
+      ptr = ptr.next
+    end
+    
+
   end
 
   # uncomment when you have `each` working and `Enumerable` included
