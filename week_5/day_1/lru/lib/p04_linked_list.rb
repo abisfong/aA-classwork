@@ -49,29 +49,57 @@ class LinkedList
   end
 
   def get(key)
+    ptr = @head.next
+    until ptr == @tail
+      return ptr.val if ptr.key == key
+      ptr = ptr.next
+    end
   end
 
   def include?(key)
+    ptr = @head.next
+    until ptr == @tail
+      return true if ptr.key == key
+      ptr = ptr.next
+    end
+    false
   end
 
   def append(key, val)
     new_node = Node.new(key, val)
-    new_node.prev = @tail.prev
     new_node.next = @tail
+    new_node.prev = @tail.prev
+    @tail.prev.next = new_node
     @tail.prev = new_node
-    @head.next = new_node if empty?
   end
 
   def update(key, val)
+    ptr = @head.next
+    until ptr == @tail
+      ptr.val = val if ptr.key == key
+      ptr = ptr.next
+    end
   end
 
   def remove(key)
+    ptr = @head.next
+    until ptr == @tail
+      if ptr.key == key
+        right = ptr.next
+        left = ptr.prev
+        right.prev = left
+        left.next = right
+        ptr.next = ptr.prev = nil
+        return
+      end
+      ptr = ptr.next
+    end
   end
 
   def each
     # debugger
     ptr = @head.next
-    until ptr.next == @tail
+    while ptr != @tail
       yield ptr
       ptr = ptr.next
     end
