@@ -104,6 +104,27 @@ def population_constraint
   # Which country has a population that is more than Canada but less than
   # Poland? Show the name and the population.
   execute(<<-SQL)
+    SELECT
+      countries.name, countries.population
+    FROM
+      countries
+    WHERE
+      countries.population > (
+        SELECT
+          countries.population
+        FROM
+          countries
+        WHERE
+          countries.name = 'Canada'
+      ) AND
+      countries.population < (
+        SELECT
+          countries.population
+        FROM
+          countries
+        WHERE
+          countries.name = 'Poland'
+      )
   SQL
 end
 
@@ -113,5 +134,17 @@ def sparse_continents
   # population.
   # Hint: Sometimes rewording the problem can help you see the solution.
   execute(<<-SQL)
+    SELECT
+      countries.name, countries.continent, countries.population
+    FROM
+      countries
+    WHERE
+      countries.continent NOT IN (SELECT
+        countries.continent
+      FROM
+        countries
+      WHERE
+        countries.population >= 25000000
+      )
   SQL
 end
