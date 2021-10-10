@@ -1,0 +1,9 @@
+<form action="<%= action_url %>" method="<%= form_method %>">
+  <% if hidden_method %>
+    <input type="hidden" name="_method" value="<%= hidden_method %>"/>
+  <% end%>
+
+  <%= render 'inputs', cat: cat%>
+
+  <input type="submit" value="<%= button_text %>" />
+</form>
