@@ -1,1 +1,5 @@
 /* PHASE 2: Notifications */
+.header {
+  position: relative;
+  z-index: 1;
+}

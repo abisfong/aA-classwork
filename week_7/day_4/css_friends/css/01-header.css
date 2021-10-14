@@ -25,9 +25,13 @@ body {
   display: flex;
 }
 
-.logo {
-  font-weight: bold;
+a {
+  color: white;
   text-decoration: none;
+}
+
+.logo:hover, .menu li:hover {
+  background-color: black;
 }
 
 .logo, .menu li {
@@ -35,10 +39,10 @@ body {
     
   align-items: center;
   
-  color: white;
   padding: 0 15px;
   height: 50px;
 }
+
 
 .logo:nth-child(n-1),
 .menu li:nth-child(2n-1) {
