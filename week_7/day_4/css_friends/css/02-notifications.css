@@ -27,15 +27,22 @@ body {
   display: none;
   
   background-color: white;
+  border: 1px solid gray;
+  border-top: none;
 
   position: absolute;
   top: 50px;
+  margin-left: -15px;
 }
 
 .notifications-dropdown li:hover {
   background-color: lightgrey;
 }
 
-.notifications:hover + .notifications-dropdown {
+.notifications-dropdown li {
+  border-top: 1px solid gray;
+}
+
+.notifications:hover .notifications-dropdown {
   display: block;
 }
