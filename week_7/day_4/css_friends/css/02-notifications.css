@@ -1,7 +1,15 @@
 /* PHASE 2: Notifications */
+body {
+    background-color: #eee;
+}
+
 .header {
   position: relative;
   z-index: 1;
+}
+
+.notifications:hover .badge {
+  background-color: red;
 }
 
 .badge {
@@ -12,4 +20,22 @@
   margin-left: 5px;
   width: 20px;
   text-align: center;
+}
+
+
+.notifications-dropdown {
+  display: none;
+  
+  background-color: white;
+
+  position: absolute;
+  top: 50px;
+}
+
+.notifications-dropdown li:hover {
+  background-color: lightgrey;
+}
+
+.notifications:hover + .notifications-dropdown {
+  display: block;
 }

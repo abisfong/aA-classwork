@@ -48,8 +48,9 @@ a {
 }
 
 
-.logo:nth-child(n-1),
-.menu li:nth-child(2n-1) {
+.logo,
+.menu li:first-child,
+.menu li:last-child {
   border-left: 1px solid white;
   border-right: 1px solid white;
 }
