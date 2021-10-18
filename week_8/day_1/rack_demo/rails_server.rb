@@ -23,11 +23,39 @@ end
 #   Port: 3000
 # })
 
+# class MyController
+#   def self.call(env)
+#     req = Rack::Request.new(env)
+#     res = Rack::Response.new
+
+#     # giving to check req path
+#     if req.path == '/cats'
+#       res.write('This is our cats page! :3')
+#     elsif req.path == '/dogs'
+#       res.status = 302
+#       res.location = '/cats'
+#     elsif req.path == '/html'
+#       res.write("<h1>HTML is really just a string </h1>")
+#     else
+#       res.write("Hello World")
+#     end
+#     res.finish
+#   end
+# end
+
 class MyController
   def self.call(env)
-    req = Rack::Request.new(env)
-    res = Rack::Response.new
+    self.new(env).execute
+  end
 
+  attr_reader :req, :res
+  
+  def initialize(env)
+    @req = Rack::Request.new(env)
+    @res = Rack::Response.new
+  end
+
+  def execute
     # giving to check req path
     if req.path == '/cats'
       res.write('This is our cats page! :3')
