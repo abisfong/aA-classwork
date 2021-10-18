@@ -65,7 +65,8 @@ class MyController
     elsif req.path == '/html'
       res.write("<h1>HTML is really just a string </h1>")
     else
-      res.write("Hello World")
+      res.status = 404
+      res.write("<h1>Page Note Found</h1>")
     end
     res.finish
   end
