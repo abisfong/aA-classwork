@@ -55,18 +55,23 @@ class MyController
     @res = Rack::Response.new
   end
 
+  def render_content(content)
+    res.write(content)
+    res['Content-Type'] = "text/html"
+  end
+
   def execute
     # giving to check req path
     if req.path == '/cats'
-      res.write('This is our cats page! :3')
+      render_content 'This is our cats page! :3'
     elsif req.path == '/dogs'
       res.status = 302
       res.location = '/cats'
     elsif req.path == '/html'
-      res.write("<h1>HTML is really just a string </h1>")
+      render_content "<h1>HTML is really just a string </h1>"
     else
       res.status = 404
-      res.write("<h1>Page Note Found</h1>")
+      render_content "<h1>Page Note Found</h1>"
     end
     res.finish
   end
