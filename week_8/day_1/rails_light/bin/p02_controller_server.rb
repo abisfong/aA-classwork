@@ -10,9 +10,6 @@ class MyController < ControllerBase
       redirect_to("/cats")
     end
   end
-
-
-
 end
 
 
