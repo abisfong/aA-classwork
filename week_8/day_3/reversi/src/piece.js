@@ -1,7 +1,9 @@
 /**
  * Initializes the Piece with its color.
  */
-function Piece (color) {
+function Piece(color) {
+    this.color = color;
+
 }
 
 /**
@@ -14,6 +16,7 @@ Piece.prototype.oppColor = function () {
  * Changes the piece's color to the opposite color.
  */
 Piece.prototype.flip = function () {
+    this.color = this.color === "white" ? "black" : "white";
 };
 
 /**
@@ -21,6 +24,7 @@ Piece.prototype.flip = function () {
  * based on its color.
  */
 Piece.prototype.toString = function () {
+    return this.color === "white" ? "W" : "B";
 };
 
 // DON'T TOUCH THIS CODE
