@@ -235,6 +235,7 @@ describe("Board", function () {
     });
 
     it('should return false for a move that does not capture', function () {
+      debugger;
       expect(testBoard.validMove([2, 3], "white")).toEqual(false);
     });
 
