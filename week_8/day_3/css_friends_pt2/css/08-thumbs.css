@@ -1,0 +1,21 @@
+/* PHASE 2: Thumbs */
+
+.thumbs {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.thumbs > li {
+  width: 60px;
+
+  margin-bottom: 10px;
+}
+
+.thumbs > li:nth-child(3n - 1) {
+  margin: 0 10px;
+}
+
+.thumbs > li > img {
+  border-radius: 5px;
+  border: 1px solid black;
+}
