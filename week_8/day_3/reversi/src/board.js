@@ -113,8 +113,18 @@ let newPos = function(pos, dir) {
  * color being flipped.
  */
 Board.prototype.validMove = function (pos, color) {
-  if (this.isOccupied(pos) || this.getPiece(pos).color === color)
+  if (this.isOccupied(pos))
     return false;
+  
+  let dirs = [[1,0], [1,1], [0,1], [-1,1], [-1,0], [-1,-1], [0,-1], [1,-1]];
+
+  for (let i = 0; i < dirs.length; i++) {
+    if (this._positionsToFlip(pos, color, dirs[i]).length != 0) {
+      return true;
+    }
+  }
+
+  return false;
 };
 
 /**
