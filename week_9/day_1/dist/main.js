@@ -19,13 +19,33 @@ eval("const MovingObject = __webpack_require__(/*! ./movingObject.js */ \"./src/
 
 /***/ }),
 
+/***/ "./src/game.js":
+/*!*********************!*\
+  !*** ./src/game.js ***!
+  \*********************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("const Asteroid = __webpack_require__(/*! ./asteroid */ \"./src/asteroid.js\");\n\nfunction Game() {\n  // do we need to accept arguments?\n  this.asteroids = [];\n  for(let i = 0; i < Game.NUM_ASTEROIDS; i++) {\n   this.addAsteroid();\n  }\n  this.width = 1100;\n  this.height = 800;\n}\n\nGame.DIM_XY = [[1,0], [-1,0], [1,1], [-1,-1], [-1,1], [1,1], [0,1], [0,-1]];\nGame.NUM_ASTEROIDS = 20;\n\nGame.prototype.addAsteroid = function () {\n  // Game grid 1100(w) x 800(h)\n  let newAsteroid = new Asteroid({ pos: this.randPos() });\n  // console.log(this);\n  // console.log(newAsteroid);\n  this.asteroids.push(newAsteroid)\n}\n\nGame.prototype.randPos = function (width=1100, height=800) {\n  return [Math.random()*width, Math.random()*height];\n}\n\nGame.prototype.draw = function (ctx) {\n  ctx.clearRect(0,0, this.width, this.height);\n  for (let i = 0; i < this.NUM_ASTEROIDS; i++) {\n    this.asteroids[i].draw(ctx);\n  }\n}\n\nGame.prototype.moveObjects = function(){\n  for (let i = 0; i < this.NUM_ASTEROIDS; i++) {\n    this.asteroids[i].move(); \n  }\n}\n\nmodule.exports = Game; \n\n//# sourceURL=webpack:///./src/game.js?");
+
+/***/ }),
+
+/***/ "./src/gameView.js":
+/*!*************************!*\
+  !*** ./src/gameView.js ***!
+  \*************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("//keeping track of canvas objects, game and ship\n//set intertval to animate game\n//bind key handlers to ship so we can whip it around\n\nconst Game = __webpack_require__(/*! ./game */ \"./src/game.js\");\n\nfunction GameView(ctx){\n  this.ctx = ctx;\n  this.game = new Game();\n}\n\nGameView.prototype.start = function (){\n  setInterval(() => {\n    this.game.moveObjects();\n    console.log(this);\n    this.game.draw(this.ctx); \n  }, 20); \n}\n\nmodule.exports = GameView; \n\n//# sourceURL=webpack:///./src/gameView.js?");
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("console.log(\"webpack is working\")\nconst MovingObject = __webpack_require__(/*! ./movingObject.js */ \"./src/movingObject.js\");\nconst Asteroid = __webpack_require__(/*! ./asteroid.js */ \"./src/asteroid.js\")\n\n\n//waits for the document model to be loaded \n//doc model is javascript modeling the html\n//dom refers to model \n//window.documnet or document \n\ndocument.addEventListener(\"DOMContentLoaded\", function() {\n  const canvas = document.getElementById(\"game-canvas\");\n  window.ctx = canvas.getContext(\"2d\"); \n}); \n\n//if you wanna see methods in window use window.\nwindow.MovingObject = MovingObject; \nwindow.Asteroid = Asteroid; \n\nwindow.mo = new MovingObject({\n  pos: [30, 30],\n  vel: [10, 10],\n  radius: 5,\n  color: \"#00FF00\"\n});\n\n\n\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("console.log(\"webpack is working\")\nconst MovingObject = __webpack_require__(/*! ./movingObject.js */ \"./src/movingObject.js\");\nconst Asteroid = __webpack_require__(/*! ./asteroid.js */ \"./src/asteroid.js\");\nconst GameView = __webpack_require__(/*! ./gameView.js */ \"./src/gameView.js\");\nconst Game = __webpack_require__(/*! ./game.js */ \"./src/game.js\");\n\n\n//waits for the document model to be loaded \n//doc model is javascript modeling the html\n//dom refers to model \n//window.documnet or document \n\ndocument.addEventListener(\"DOMContentLoaded\", function() {\n  const canvas = document.getElementById(\"game-canvas\");\n  window.ctx = canvas.getContext(\"2d\"); \n}); \n\n//if you wanna see methods in window use window.\nwindow.MovingObject = MovingObject; \nwindow.Asteroid = Asteroid; \nwindow.GameView = GameView; \nwindow.Game = Game;\n\nwindow.mo = new MovingObject({\n  pos: [30, 30],\n  vel: [10, 10],\n  radius: 5,\n  color: \"#00FF00\"\n});\n\n\n\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ }),
 
