@@ -15,17 +15,16 @@ function Asteroid(options) {
 
 }
 
+Util.inherits(Asteroid, MovingObject); 
+
 Asteroid.prototype.collideWith = function (otherObject) {
   if (otherObject instanceof Ship) {
-    console.log("Instance of ship");
     otherObject.relocate();
   } else {
     // do we need to keep this?
-    console.log("Removing collisions");
     this.game.remove(otherObject);
     this.game.remove(this);
   }
 }
 
-Util.inherits(Asteroid, MovingObject); 
 module.exports = Asteroid; 

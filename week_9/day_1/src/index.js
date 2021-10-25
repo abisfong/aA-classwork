@@ -1,4 +1,4 @@
-console.log("webpack is working")
+console.log("webpack is working");
 const MovingObject = require('./movingObject.js');
 const Asteroid = require('./asteroid.js');
 const GameView = require('./gameView.js');

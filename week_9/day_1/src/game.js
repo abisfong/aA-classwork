@@ -22,8 +22,6 @@ Game.NUM_ASTEROIDS = 8;
 Game.prototype.addAsteroid = function () {
   // Game grid 1100(w) x 800(h)
   let newAsteroid = new Asteroid({ pos: this.randPos(), game: this });
-  // console.log(this);
-  // console.log(newAsteroid);
   this.asteroids.push(newAsteroid)
 }
 
@@ -70,7 +68,6 @@ Game.prototype.step = function () {
   this.moveObjects();
   let collidedObjects = this.checkCollisions();
   for (let i = 0; i < collidedObjects.length; i++) {
-    console.log("colliding with:");
     collidedObjects[i][0].collideWith(collidedObjects[i][1]);    
   }
 }
@@ -78,7 +75,6 @@ Game.prototype.step = function () {
 Game.prototype.remove = function (asteroid) {
   for (let i = 0; i < this.asteroids.length; i++) {
     if (this.asteroids[i] === asteroid) {
-      console.log("Removing:", asteroid);
       this.asteroids.splice(i, 1);
       return true;
     }
