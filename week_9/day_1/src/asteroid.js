@@ -8,8 +8,10 @@ function Asteroid(options) {
     pos: options.pos, 
     radius: options.radius || 30, 
     vel: Util.randomVec(5), 
-    color: options.color || "blue"
-  }); 
+    color: options.color || "blue",
+    game: options.game
+  });
+
 }
 
 Util.inherits(Asteroid, MovingObject); 
