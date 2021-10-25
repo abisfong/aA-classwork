@@ -35,7 +35,7 @@ eval("const Asteroid = __webpack_require__(/*! ./asteroid */ \"./src/asteroid.js
   \*************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("//keeping track of canvas objects, game and ship\n//set intertval to animate game\n//bind key handlers to ship so we can whip it around\n\nconst Game = __webpack_require__(/*! ./game */ \"./src/game.js\");\n\nfunction GameView(ctx){\n  this.ctx = ctx;\n  this.game = new Game();\n}\n\nGameView.prototype.start = function (){\n  setInterval(() => {\n    this.game.moveObjects();\n    console.log(this);\n    this.game.draw(this.ctx); \n  }, 20); \n}\n\nmodule.exports = GameView; \n\n//# sourceURL=webpack:///./src/gameView.js?");
+eval("//keeping track of canvas objects, game and ship\n//set intertval to animate game\n//bind key handlers to ship so we can whip it around\n\nconst Game = __webpack_require__(/*! ./game */ \"./src/game.js\");\n\nfunction GameView(ctx){\n  this.ctx = ctx;\n  this.game = new Game();\n}\n\nGameView.prototype.start = function (){\n  setInterval(() => {\n    this.game.moveObjects();\n    console.log(this);\n    console.log();\n    this.game.draw(this.ctx); \n  }, 20); \n}\n\nmodule.exports = GameView; \n\n//# sourceURL=webpack:///./src/gameView.js?");
 
 /***/ }),
 
