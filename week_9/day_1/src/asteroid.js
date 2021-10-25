@@ -1,6 +1,16 @@
+const MovingObject = require('./movingObject.js');
+const Util = require('./utils.js');
+
+
+
 function Asteroid(options) {
-  this.color = options.color || "blue";
-  this.radius = options.radius || 30;
-  this.pos = options.pos;
-  this.vel = Util.randomVec(5); // is the argument valid?
+  MovingObject.call(this, {
+    pos: options.pos, 
+    radius: options.radius || 30, 
+    vel: Util.randomVec(5), 
+    color: options.color || "blue"
+  }); 
 }
+
+Util.inherits(Asteroid, MovingObject); 
+module.exports = Asteroid; 
