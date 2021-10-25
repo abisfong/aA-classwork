@@ -15,7 +15,7 @@
   \**********************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("console.log(\"webpack is working\")\nconst MovingObject = __webpack_require__(/*! ./movingObject.js */ \"./src/movingObject.js\");\n\n\n//waits for the document model to be loaded \n//doc model is javascript modeling the html\n//dom refers to model \n//window.documnet or document \n\ndocument.addEventListener(\"DOMContentLoaded\", function() {\n  const canvas = document.getElementById(\"game-canvas\");\n  window.ctx = canvas.getContext(\"2d\"); \n}); \n\n//if you wanna see methods in window use window.\nwindow.MovingObject = MovingObject; \n\n\n\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("console.log(\"webpack is working\")\nconst MovingObject = __webpack_require__(/*! ./movingObject.js */ \"./src/movingObject.js\");\n\n\n//waits for the document model to be loaded \n//doc model is javascript modeling the html\n//dom refers to model \n//window.documnet or document \n\ndocument.addEventListener(\"DOMContentLoaded\", function() {\n  const canvas = document.getElementById(\"game-canvas\");\n  window.ctx = canvas.getContext(\"2d\"); \n}); \n\n//if you wanna see methods in window use window.\nwindow.MovingObject = MovingObject; \n\nwindow.mo = new MovingObject({\n  pos: [30, 30],\n  vel: [10, 10],\n  radius: 5,\n  color: \"#00FF00\"\n});\n\n\n\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ }),
 
@@ -25,7 +25,7 @@ eval("console.log(\"webpack is working\")\nconst MovingObject = __webpack_requir
   \*****************************/
 /***/ ((module) => {
 
-eval("function MovingObject(options){\n  this.pos = options.pos;\n  this.vel = options.vel;\n  this.radius = options.radius;\n  this.color = options.color; \n}\n\nMovingObject.prototype = function draw(ctx){\n  //draw circle of appriorte raduis centered at position \n  ctx.beginPath(); \n  ctx.arc(this.pos[0], this.pos[1], this.radius, 0, 2 * Math.PI, false);\n  ctx.stroke();\n  ctx.fillStyle = \"brown\"; \n  ctx.fill();\n  \n}\n\n\nmodule.exports = MovingObject; \n\n//# sourceURL=webpack:///./src/movingObject.js?");
+eval("function MovingObject(options){\n  this.pos = options.pos;\n  this.vel = options.vel;\n  this.radius = options.radius;\n  this.color = options.color; \n}\n\nMovingObject.prototype.draw = function (ctx){\n  //draw circle of appriorte raduis centered at position \n  ctx.beginPath(); \n  ctx.arc(this.pos[0], this.pos[1], this.radius, 0, 2 * Math.PI, false);\n  ctx.stroke();\n  ctx.fillStyle = \"brown\"; \n  ctx.fill(); \n}\n\nMoveObject.prototype.move = function () {\n  this.pos[0] += this.vel;\n  this.pos[1] += this.vel;\n}\n\nmodule.exports = MovingObject; \n\n//# sourceURL=webpack:///./src/movingObject.js?");
 
 /***/ })
 
