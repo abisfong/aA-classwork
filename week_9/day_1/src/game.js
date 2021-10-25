@@ -3,12 +3,15 @@ const Asteroid = require("./asteroid");
 function Game() {
   let canvas = document.getElementById('game-canvas');
   
+  this.width = canvas.offsetWidth;
+  this.height = canvas.offsetHeight;
+
+
   this.asteroids = [];
   for(let i = 0; i < Game.NUM_ASTEROIDS; i++) {
    this.addAsteroid();
   }
-  this.width = canvas.style.width;
-  this.height = canvas.style.height;
+
 }
 
 Game.DIM_XY = [[1,0], [-1,0], [1,1], [-1,-1], [-1,1], [1,1], [0,1], [0,-1]];
@@ -22,8 +25,8 @@ Game.prototype.addAsteroid = function () {
   this.asteroids.push(newAsteroid)
 }
 
-Game.prototype.randPos = function (width=this.width, height=this.height) {
-  return [Math.random()*width, Math.random()*height];
+Game.prototype.randPos = function () {
+  return [Math.random()*this.width, Math.random()*this.height];
 }
 
 Game.prototype.draw = function (ctx) {
@@ -41,6 +44,16 @@ Game.prototype.moveObjects = function(){
 
 Game.prototype.wrap = function (pos) {
   return [pos[0] % this.width, pos[1] % this.height]
+}
+
+Game.prototype.checkCollisions = function (){
+  for (let i = 0; i < this.asteroids.length; i++) {
+    for (let j = i + 1; j < this.asteroids.length; j++) {
+      if (this.asteroids[i].isCollidedWith(this.asteroids[j])){
+        alert("COLLISION"); 
+      } 
+    }
+  }
 }
 
 module.exports = Game; 

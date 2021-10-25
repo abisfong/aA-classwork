@@ -23,4 +23,13 @@ MovingObject.prototype.move = function () {
   this.pos = this.game.wrap(this.pos);
 }
 
+MovingObject.prototype.isCollidedWith = function(otherObject){
+  //two circles have collieded if there distance between their center points is less than the sum of thier radii
+  return this.radius + otherObject.radius > euclidanDistance(this.pos, otherObject.pos);
+}
+
+function euclidanDistance(pos1, pos2){
+  return Math.sqrt((pos2[0]-pos1[0])**2 +(pos2[1]-pos1[1])**2)
+}
+
 module.exports = MovingObject; 

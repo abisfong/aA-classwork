@@ -12,6 +12,7 @@ function GameView(ctx){
 GameView.prototype.start = function (){
   setInterval(() => {
     this.game.moveObjects();
+    this.game.checkCollisions();
     // console.log(this);
     // console.log();
     this.game.draw(this.ctx); 
