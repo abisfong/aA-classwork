@@ -1,6 +1,8 @@
 console.log("webpack is working")
 const MovingObject = require('./movingObject.js');
-const Asteroid = require('./asteroid.js')
+const Asteroid = require('./asteroid.js');
+const GameView = require('./gameView.js');
+const Game = require('./game.js');
 
 
 //waits for the document model to be loaded 
@@ -16,6 +18,8 @@ document.addEventListener("DOMContentLoaded", function() {
 //if you wanna see methods in window use window.
 window.MovingObject = MovingObject; 
 window.Asteroid = Asteroid; 
+window.GameView = GameView; 
+window.Game = Game;
 
 window.mo = new MovingObject({
   pos: [30, 30],
