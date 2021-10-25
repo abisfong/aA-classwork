@@ -1,4 +1,5 @@
 const Asteroid = require("./asteroid");
+const Ship = require("./ship");
 
 function Game() {
   let canvas = document.getElementById('game-canvas');
@@ -6,6 +7,7 @@ function Game() {
   this.width = canvas.offsetWidth;
   this.height = canvas.offsetHeight;
 
+  this.ship = new Ship({game: this});
 
   this.asteroids = [];
   for(let i = 0; i < Game.NUM_ASTEROIDS; i++) {
@@ -30,28 +32,34 @@ Game.prototype.randPos = function () {
 }
 
 Game.prototype.draw = function (ctx) {
+  let allObjs = this.allObjects();
   ctx.clearRect(0,0, this.width, this.height);
-  for (let i = 0; i < this.asteroids.length; i++) {
-    this.asteroids[i].draw(ctx);
+  for (let i = 0; i < allObjs.length; i++) {
+    allObjs[i].draw(ctx);
   }
 }
 
 Game.prototype.moveObjects = function(){
-  for (let i = 0; i < this.asteroids.length; i++) {
-    this.asteroids[i].move(); 
+  let allObjs = this.allObjects();
+  for (let i = 0; i < allObjs.length; i++) {
+    allObjs[i].move(); 
   }
 }
 
 Game.prototype.wrap = function (pos) {
-  return [pos[0] % this.width, pos[1] % this.height]
+
+  return [
+    pos[0] < 0 ? this.width : pos[0] % this.width, 
+    pos[1] < 0 ? this.height : pos[1] % this.height]
 }
 
 Game.prototype.checkCollisions = function (){
+  let allObjs = this.allObjects();
   let collidedObjects = [];
-  for (let i = 0; i < this.asteroids.length; i++) {
-    for (let j = i + 1; j < this.asteroids.length; j++) {
-      if (this.asteroids[i].isCollidedWith(this.asteroids[j])){
-        collidedObjects.push([this.asteroids[i], this.asteroids[j]]);
+  for (let i = 0; i < allObjs.length; i++) {
+    for (let j = i + 1; j < allObjs.length; j++) {
+      if (allObjs[i].isCollidedWith(allObjs[j])){
+        collidedObjects.push([allObjs[i], allObjs[j]]);
       } 
     }
   }
@@ -73,6 +81,10 @@ Game.prototype.remove = function (asteroid) {
       return true;
     }
   }
+}
+
+Game.prototype.allObjects = function(){
+  return [this.ship, ...this.asteroids]
 }
 
 module.exports = Game; 
