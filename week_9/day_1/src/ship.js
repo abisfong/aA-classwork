@@ -11,7 +11,11 @@ function Ship(options){
   });
 }
 
+Ship.prototype.relocate = function () {
+  this.vel = [0, 0];
+  this.pos = this.game.randPos();
+}
 
-Util.inherits(ship, MovingObject); 
+Util.inherits(Ship, MovingObject); 
 
 module.exports = Ship;

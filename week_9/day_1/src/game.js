@@ -47,10 +47,10 @@ Game.prototype.moveObjects = function(){
 }
 
 Game.prototype.wrap = function (pos) {
-
   return [
     pos[0] < 0 ? this.width : pos[0] % this.width, 
-    pos[1] < 0 ? this.height : pos[1] % this.height]
+    pos[1] < 0 ? this.height : pos[1] % this.height
+  ]
 }
 
 Game.prototype.checkCollisions = function (){
@@ -83,8 +83,8 @@ Game.prototype.remove = function (asteroid) {
   }
 }
 
-Game.prototype.allObjects = function(){
-  return [this.ship, ...this.asteroids]
+Game.prototype.allObjects = function() {
+  return [...this.asteroids, this.ship]
 }
 
 module.exports = Game; 
