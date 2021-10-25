@@ -32,4 +32,9 @@ function euclidanDistance(pos1, pos2){
   return Math.sqrt((pos2[0]-pos1[0])**2 +(pos2[1]-pos1[1])**2)
 }
 
+MovingObject.prototype.collideWith = function (otherObject) {
+  this.game.remove(otherObject);
+  this.game.remove(this);
+}
+
 module.exports = MovingObject; 
