@@ -3,8 +3,9 @@ ul {
   flex-wrap: wrap;
   
   list-style-type: none;
+  margin: 0 auto;
 
-  width: 400px;
+  width: 300px;
 }
 
 li {
@@ -15,6 +16,6 @@ li {
   background: lightgray;
 }
 
-ul li:hover[data-unchecked] {
+ul li:hover[data-checked="false"] {
   background-color: yellow;
 }

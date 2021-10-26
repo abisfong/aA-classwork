@@ -25,7 +25,7 @@ eval("const View = __webpack_require__(/*! ./ttt-view */ \"./src/ttt-view.js\");
   \*************************/
 /***/ ((module) => {
 
-eval("class View {\n  constructor(game, el) {\n    this.setupBoard();\n    el.appendChild(this.grid);\n  }\n\n  setupBoard() {\n    this.grid = document.createElement(\"ul\");\n    for (let i = 0; i < 9; i++)\n      this.grid.appendChild(document.createElement(\"li\"));\n  }\n  \n  bindEvents() {}\n\n  handleClick(e) {}\n\n  makeMove(square) {}\n\n}\n\nmodule.exports = View;\n\n\n//# sourceURL=webpack:///./src/ttt-view.js?");
+eval("class View {\n  constructor(game, container) {\n    this.container = container;\n    this.game = game;\n    this.setupBoard();\n    this.bindEvents();\n  }\n  \n  setupBoard() {\n    this.grid = document.createElement(\"ul\");\n    for (let i = 0; i < 3; i++) {\n      for (let j = 0; j < 3; j++) {\n        let li = document.createElement(\"li\");\n        li.setAttribute(`data-pos`, `${i},${j}`);\n        li.setAttribute(`data-checked`, 'false');\n        this.grid.appendChild(li);\n      }\n    }\n    this.container.appendChild(this.grid);\n  }\n  \n  bindEvents() {\n    this.container.addEventListener(\"click\", this.handClick);\n  }\n\n  handleClick(event) {\n    let square = event.target;\n    this.makeMove(square);\n  }\n\n  makeMove(square) {\n    let pos = square.dataset.pos.split(',').map(el => parseInt(el))\n    \n    try {\n      this.game.playMove(pos);\n      square.style.backgroundColor = \"white\";\n    } catch (error) {\n      alert(error);\n    }\n  }\n\n}\n\nmodule.exports = View;\n\n\n//# sourceURL=webpack:///./src/ttt-view.js?");
 
 /***/ }),
 
