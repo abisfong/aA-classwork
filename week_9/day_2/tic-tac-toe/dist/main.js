@@ -15,7 +15,7 @@
   \**********************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("const View = __webpack_require__(/*! ./ttt-view */ \"./src/ttt-view.js\");\nconst Game = __webpack_require__(/*! ../ttt_node/game.js */ \"./ttt_node/game.js\")\n\nconst view = new View();\nconst game = new Game();\n\ndocument.addEventListener(\"DOMContentLoaded\", () => {\n  document.getElementsByClassName(\"ttt\")[0];\n  \n});\n\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("const View = __webpack_require__(/*! ./ttt-view */ \"./src/ttt-view.js\");\nconst Game = __webpack_require__(/*! ../ttt_node/game.js */ \"./ttt_node/game.js\");\nconst Board = __webpack_require__(/*! ../ttt_node/board */ \"./ttt_node/board.js\");\n\nconst game = new Game();\n\ndocument.addEventListener(\"DOMContentLoaded\", () => {\n  const container = document.getElementsByClassName(\"ttt\")[0];\n  const view = new View(game, container);\n  window.view = view;\n  // let board = new Board();\n});\n\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ }),
 
@@ -25,7 +25,7 @@ eval("const View = __webpack_require__(/*! ./ttt-view */ \"./src/ttt-view.js\");
   \*************************/
 /***/ ((module) => {
 
-eval("class View {\n  constructor(game, el) {}\n\n  setupBoard() {\n    this.grid = document.createElement(\"ul\");\n    for (i = 0; i < 9; i++) {\n      grid.appendChild(document.createElement(\"li\"));\n    }\n  }\n  \n  bindEvents() {}\n\n  handleClick(e) {}\n\n  makeMove(square) {}\n\n}\n\nmodule.exports = View;\n\n\n//# sourceURL=webpack:///./src/ttt-view.js?");
+eval("class View {\n  constructor(game, el) {\n    this.setupBoard();\n    el.appendChild(this.grid);\n  }\n\n  setupBoard() {\n    this.grid = document.createElement(\"ul\");\n    for (let i = 0; i < 9; i++)\n      this.grid.appendChild(document.createElement(\"li\"));\n  }\n  \n  bindEvents() {}\n\n  handleClick(e) {}\n\n  makeMove(square) {}\n\n}\n\nmodule.exports = View;\n\n\n//# sourceURL=webpack:///./src/ttt-view.js?");
 
 /***/ }),
 

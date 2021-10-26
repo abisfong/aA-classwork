@@ -1,11 +1,13 @@
 class View {
-  constructor(game, el) {}
+  constructor(game, el) {
+    this.setupBoard();
+    el.appendChild(this.grid);
+  }
 
   setupBoard() {
     this.grid = document.createElement("ul");
-    for (i = 0; i < 9; i++) {
-      grid.appendChild(document.createElement("li"));
-    }
+    for (let i = 0; i < 9; i++)
+      this.grid.appendChild(document.createElement("li"));
   }
   
   bindEvents() {}
