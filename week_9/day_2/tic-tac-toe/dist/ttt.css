@@ -19,3 +19,7 @@ li {
 ul li:hover[data-checked="false"] {
   background-color: yellow;
 }
+
+ul li[data-checked="true"] {
+  background-color: white;
+}
