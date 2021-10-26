@@ -1,8 +1,20 @@
 ul {
   display: flex;
   flex-wrap: wrap;
+  
+  list-style-type: none;
 
+  width: 400px;
+}
+
+li {
   width: 33%;
-
+  height: 100px;
   border: 1px solid black;
+  box-sizing: border-box;
+  background: lightgray;
+}
+
+ul li:hover[data-unchecked] {
+  background-color: yellow;
 }
