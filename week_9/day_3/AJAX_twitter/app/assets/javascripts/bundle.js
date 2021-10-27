@@ -11,6 +11,17 @@ function FollowToggle(el) {
   this.userId = el.dataset.userId;
   this.followState = el.dataset.initialFollowState;
   this.$toggle = $(el);
+  this.render();
+  console.log("Creating toggle button for:");
+  console.log(el);
+}
+
+FollowToggle.prototype.render = function () {
+  if (this.followState === "false") {
+    this.$toggle.text("Follow!");
+  } else {
+    this.$toggle.text("Unfollow!");
+  }
 }
 
 module.exports = FollowToggle;
@@ -52,6 +63,11 @@ var __webpack_exports__ = {};
   \*****************************/
 const FollowToggle = __webpack_require__(/*! ./follow_toggle */ "./frontend/follow_toggle.js");
 
+$(() => {
+  $('.follow-toggle').each(function () {
+    let followToggle = new FollowToggle(this);
+  });
+});
 })();
 
 /******/ })()
