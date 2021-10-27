@@ -24,7 +24,7 @@ function dogLinkCreator () {
 
 function attachDogLinks() {
   let dogLinks = dogLinkCreator();
-  document.querySelector(".drop-down-dog-list").append(dogLinks);
+  document.querySelector(".drop-down-dog-list").append(dogLinks); // append eahc child instead
 }
 
 export {attachDogLinks}
