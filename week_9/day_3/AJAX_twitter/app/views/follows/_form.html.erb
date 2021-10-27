@@ -1,5 +1,8 @@
+<form>
+<input type="hidden" name="authenticity_token" value="form_authenticity_token">
 <button 
   class="follow-toggle" 
-  <%= 'data-user-id="#{user.id}"' %>
-  <%= current_user.follows?(user) ? "data-initial-follow-state='true'" : "data-initial-follow-state='false'" %>>
+  <%= "data-user-id=#{user.id}" %>
+  <%= current_user.follows?(user) ? "data-initial-follow-state=true" : "data-initial-follow-state=false" %>>
 </button>
+</form>
