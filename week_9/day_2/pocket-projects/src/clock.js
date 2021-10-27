@@ -1,5 +1,8 @@
-class Clock {
-  constructor() {
+import { htmlGenerator } from "./warmup";
+
+export class Clock {
+  constructor(container) {
+    this.container = container;
     // 1. Create a Date object.
     this.time = new Date();
     // 2. Store the hours, minutes, and seconds.
@@ -20,7 +23,9 @@ class Clock {
     timeString += ':';
     timeString += this.seconds < 10 ? '0' + this.seconds : this.seconds;
     // Use console.log to print it.
-    console.log(timeString);
+    let time = this.container.querySelector('p:last-child')
+    if (time) time.remove();
+    htmlGenerator(timeString, this.container);
   }
 
   _tick() {

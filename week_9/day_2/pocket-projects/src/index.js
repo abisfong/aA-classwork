@@ -1,2 +1,4 @@
 import warmUp from "./warmup";
-import clock from "./clock"
+import { Clock } from "./clock"
+
+let c = new Clock(document.querySelector('#clock'));

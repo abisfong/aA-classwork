@@ -51,3 +51,9 @@ h1 {
   opacity: 1;
   transform: translateX(0%) scale(1);
 }
+
+#clock p {
+  margin: 15px auto;
+  background-color: white;
+  width: 85px;
+}
