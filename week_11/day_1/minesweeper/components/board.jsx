@@ -1,4 +1,5 @@
 import React from 'react';
+import Tile from './tile';
 
 export default class Board {
   constructor(props) {
@@ -14,9 +15,11 @@ export default class Board {
           board.grid.map((row, i) => {
             return (
               <div key={i}>
-                row.map((tile, j) => {
-                  <Tile tile={tile} updateGame={this.props.updateGame} key={j}/>
-                })
+                {
+                  row.map((tile, j) => {
+                    <Tile tile={tile} updateGame={this.props.updateGame} key={j}/>
+                  })
+                }
               </div>
             )
           })

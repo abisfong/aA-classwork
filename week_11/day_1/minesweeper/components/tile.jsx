@@ -7,6 +7,21 @@ export default class Tile {
   }
   
   render() {
-    return "T";
+    const tile = this.props.tile;
+    let tileContent = '';
+    if (tile.explored) {
+      if (tile.bombed) {
+        tileContent = 'bombed';
+      } else {
+        tileContent = `${tile.adjacentBombCount()}`;
+      }
+    } else if (tile.flagged) {
+      tileContent = 'flagged';
+    }
+    return (
+      <div className={tileContent}>
+        
+      </div>
+    );
   }
 }
