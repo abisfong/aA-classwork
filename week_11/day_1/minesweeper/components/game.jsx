@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { Board } from '../minesweeper';
 
 export default class Game extends React.Component {
