@@ -3,7 +3,15 @@ import React from 'react';
 export default class Tile {
   constructor(props) {
     super(props);
+    this.handleClick = this.handleClick.bind(this);
+  }
 
+  handleClick(event) {
+    if (event.type === 'click') {
+      this.props.updateGame(this, false);
+    } else if (event.type === 'contextmenu') {
+      this.props.updateGame(this, true);
+    }
   }
   
   render() {
@@ -19,8 +27,8 @@ export default class Tile {
       tileContent = 'flagged';
     }
     return (
-      <div className={tileContent}>
-        
+      <div className='tile' onClick={this.handleClick} onContextMenu={this.handleClick}>
+        {tileContent}
       </div>
     );
   }
