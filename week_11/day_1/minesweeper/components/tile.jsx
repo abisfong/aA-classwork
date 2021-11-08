@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default class Tile {
+export default class Tile extends React.Component {
   constructor(props) {
     super(props);
     this.handleClick = this.handleClick.bind(this);
@@ -8,9 +8,9 @@ export default class Tile {
 
   handleClick(event) {
     if (event.type === 'click') {
-      this.props.updateGame(this, false);
+      this.props.updateGame(this.props.tile, false);
     } else if (event.type === 'contextmenu') {
-      this.props.updateGame(this, true);
+      this.props.updateGame(this.props.tile, true);
     }
   }
   
@@ -26,6 +26,7 @@ export default class Tile {
     } else if (tile.flagged) {
       tileContent = 'flagged';
     }
+    console.log('rendering tile', tile);
     return (
       <div className='tile' onClick={this.handleClick} onContextMenu={this.handleClick}>
         {tileContent}
