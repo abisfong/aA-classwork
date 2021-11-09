@@ -27,6 +27,7 @@ export default class Game extends React.Component {
     const gameOver = board.won() || board.lost();
     return (
       <div className='game-container'>
+        <div class='title'>MINESWEEPER</div>
         <Board board={board} updateGame={this.updateGame}/>
         <Modal gameOver={gameOver} board={board} resetGame={this.resetGame}/>
       </div>
