@@ -13,8 +13,8 @@ export default class Modal extends React.Component {
     return (
       <div className="modal">
         <form className="modal-form">
-          <div>{modalMessage}</div>
-          <button className="game-restart" onClick={resetGame}>Restart Game</button>
+          <div className="modal-msg">{modalMessage}</div>
+          <button className="game-restart-btn" onClick={resetGame}>Restart Game</button>
         </form>
       </div>
     )

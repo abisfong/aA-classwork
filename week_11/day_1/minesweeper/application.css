@@ -1,11 +1,69 @@
+.game-container {
+  height: 100vh;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .tile {
   width: 50px;
   height: 50px;
 
   background-color: lightgrey;
   border: 2px inset black;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .tile-row {
   display: flex;
+}
+
+.modal {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  z-index: 2;
+
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-form {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  background-color: white;
+
+  border-radius: 5px;
+  width: 300px;
+  height: 150px;
+}
+
+.modal-msg {
+  font-size: 48px;
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.game-restart-btn {
+  margin: 0 auto;
+  height: 25px;
+  width: 70%;
+
+  cursor: pointer;
+  color: #f7f7f7;
+  background-color: #3b5998;
+  border: none;
+  border-radius: 5px;
 }

@@ -7,6 +7,7 @@ export default class Tile extends React.Component {
   }
 
   handleClick(event) {
+    event.preventDefault();
     if (event.type === 'click') {
       this.props.updateGame(this.props.tile, false);
     } else if (event.type === 'contextmenu') {
@@ -19,12 +20,12 @@ export default class Tile extends React.Component {
     let tileContent = '';
     if (tile.explored) {
       if (tile.bombed) {
-        tileContent = 'bombed';
+        tileContent = '💣';
       } else {
         tileContent = `${tile.adjacentBombCount()}`;
       }
     } else if (tile.flagged) {
-      tileContent = 'flagged';
+      tileContent = '🏴‍☠️';
     }
     console.log('rendering tile', tile);
     return (

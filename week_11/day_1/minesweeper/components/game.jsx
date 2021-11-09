@@ -26,12 +26,8 @@ export default class Game extends React.Component {
     const board = this.state.board;
     const gameOver = board.won() || board.lost();
     return (
-      <div>
+      <div className='game-container'>
         <Board board={board} updateGame={this.updateGame}/>
-        {/* <div>
-          {board.won() ? 'You won!' : ''}
-          {board.lost() ? 'You lost!' : ''}
-        </div> */}
         <Modal gameOver={gameOver} board={board} resetGame={this.resetGame}/>
       </div>
     );
