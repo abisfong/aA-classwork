@@ -3,8 +3,8 @@ import stepsReducer from "./steps_reducer";
 import todosReducer from './todos_reducer';
 
 const rootReducer = combineReducers({
-  Todos: todosReducer,
-  Steps: stepsReducer
+  todos: todosReducer,
+  steps: stepsReducer
 });
 
 export default rootReducer;
