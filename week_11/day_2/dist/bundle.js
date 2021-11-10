@@ -12,11 +12,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "RECEIVE_TODOS": () => (/* binding */ RECEIVE_TODOS),
 /* harmony export */   "RECEIVE_TODO": () => (/* binding */ RECEIVE_TODO),
+/* harmony export */   "REMOVE_TODO": () => (/* binding */ REMOVE_TODO),
 /* harmony export */   "receiveTodos": () => (/* binding */ receiveTodos),
-/* harmony export */   "receiveTodo": () => (/* binding */ receiveTodo)
+/* harmony export */   "receiveTodo": () => (/* binding */ receiveTodo),
+/* harmony export */   "removeTodo": () => (/* binding */ removeTodo)
 /* harmony export */ });
 var RECEIVE_TODOS = "RECEIVE_TODOS";
 var RECEIVE_TODO = "RECEIVE_TODO";
+var REMOVE_TODO = "REMOVE_TODO";
 var receiveTodos = function receiveTodos(todos) {
   return {
     type: RECEIVE_TODOS,
@@ -26,6 +29,12 @@ var receiveTodos = function receiveTodos(todos) {
 var receiveTodo = function receiveTodo(todo) {
   return {
     type: RECEIVE_TODO,
+    todo: todo
+  };
+};
+var removeTodo = function removeTodo(todo) {
+  return {
+    type: REMOVE_TODO,
     todo: todo
   };
 };
@@ -94,6 +103,11 @@ function todosReducer() {
       action.todos.forEach(function (todo) {
         newState[todo.id] = todo;
       });
+      return newState;
+
+    case _actions_todo_actions__WEBPACK_IMPORTED_MODULE_0__.REMOVE_TODO:
+      // newState = (state.slice(0, idx));
+      delete newState[action.todo.id];
       return newState;
 
     default:
@@ -989,6 +1003,7 @@ document.addEventListener('DOMContentLoaded', function () {
   window.store = store;
   window.receiveTodo = _actions_todo_actions__WEBPACK_IMPORTED_MODULE_1__.receiveTodo;
   window.receiveTodos = _actions_todo_actions__WEBPACK_IMPORTED_MODULE_1__.receiveTodos;
+  window.removeTodo = _actions_todo_actions__WEBPACK_IMPORTED_MODULE_1__.removeTodo;
   window.newTodos = newTodos;
 });
 })();
