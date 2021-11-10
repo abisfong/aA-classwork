@@ -1,3 +1,6 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './components/app';
 import configureStore from './store/store';
 import { 
   receiveTodo, 
@@ -11,14 +14,17 @@ import {
 } from './actions/step_actions';
 
 document.addEventListener('DOMContentLoaded', function() {
-  const newTodos = [{ id: 1, title: 'job1'}, { id: 2, title: 'job2' }]
-  const store = configureStore();
-  window.store = store;
-  window.receiveTodo = receiveTodo;
-  window.receiveTodos = receiveTodos;
-  window.removeTodo = removeTodo;
-  window.receiveStep = receiveStep;
-  window.receiveSteps = receiveSteps;
-  window.removeStep = removeStep;
-  window.newTodos = newTodos;
+  // const newTodos = [{ id: 1, title: 'job1'}, { id: 2, title: 'job2' }]
+  // const store = configureStore();
+  // window.store = store;
+  // window.receiveTodo = receiveTodo;
+  // window.receiveTodos = receiveTodos;
+  // window.removeTodo = removeTodo;
+  // window.receiveStep = receiveStep;
+  // window.receiveSteps = receiveSteps;
+  // window.removeStep = removeStep;
+  // window.newTodos = newTodos;
+
+  const root = document.getElementById('content');
+  ReactDOM.render(<App />, root);
 });
