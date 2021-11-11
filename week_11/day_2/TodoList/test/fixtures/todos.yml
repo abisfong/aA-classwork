@@ -1,0 +1,21 @@
+# == Schema Information
+#
+# Table name: todos
+#
+#  id         :bigint           not null, primary key
+#  title      :string
+#  body       :string
+#  done       :boolean
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+one:
+  title: MyString
+  body: MyString
+  done: false
+
+two:
+  title: MyString
+  body: MyString
+  done: false
