@@ -1,4 +1,5 @@
 import React from "react";
+import TodoDetailViewContainer from "./todo_detail_view_container"
 
 export default class TodoDetailView extends React.Component {
   constructor(props) {
@@ -14,6 +15,7 @@ export default class TodoDetailView extends React.Component {
 
   render() {
     const todo = this.props.todo;
+    if (!this.props.displayDetails) return "";
     return (
       <div>
         { todo.body }

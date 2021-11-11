@@ -1,12 +1,19 @@
 import React from "react";
+import TodoDetailView from "./todo_detail_view";
 
 class TodoListItem extends React.Component {
   constructor(props) {
     super(props)
     this.handleDoneToggle = this.handleDoneToggle.bind(this);
+    this.handleDisplayDetailsToggle = this.handleDisplayDetailsToggle.bind(this)
     this.state = {
-      detail: false
+      displayDetails: false
     };
+  }
+
+  handleDisplayDetailsToggle(e) {
+    e.preventDefault();
+    this.setState({displayDetails: !this.state.displayDetails})
   }
 
   handleDoneToggle(e) {
@@ -20,7 +27,10 @@ class TodoListItem extends React.Component {
     const todo = this.props.todo;
     return (
       <li>
-        {todo.title}
+        <div onClick={this.handleDisplayDetailsToggle}>
+        <TodoDetailViewContainer displayDetails={this.state.displayDetails}/>
+        {todo.title}  
+        </div>
         <br />
         <button onClick={this.handleDoneToggle}>
           {todo.done === "true" ? "Undo" : "Done" }
