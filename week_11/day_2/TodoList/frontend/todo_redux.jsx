@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Root from './components/root';
+import todoApiUtil from './util/todo_api_util';
 
 import configureStore from './store/store';
 import { allTodos } from './reducers/selectors';
@@ -17,6 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // window.removeStep = removeStep;
   // window.newTodos = newTodos;
   window.allTodos = allTodos;
+  window.todoApiUtil = todoApiUtil;
 
   const root = document.getElementById('content');
   ReactDOM.render(<Root store={store}/>, root);
