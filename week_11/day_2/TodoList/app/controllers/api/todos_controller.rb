@@ -30,9 +30,9 @@ class Api::TodosController < ApplicationController
   def destroy
     todo = Todo.find(params[:id])
     if todo.destroy
-      render json: status: 200
+      render status: 200
     else
-      render json: status: 409
+      render status: 409
     end
   end
 
