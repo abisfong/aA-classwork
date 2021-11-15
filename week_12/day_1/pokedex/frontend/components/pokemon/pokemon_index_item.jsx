@@ -1,7 +1,10 @@
 import React from "react";
 
 const pokemonIndexItem = ( {pokemon} ) => (
-    <li>{pokemon.name}<img src={pokemon.image_url}/></li>
+  <li className="pokemon-index-item">
+    {pokemon.name}
+    <img src={pokemon.imageUrl}/>
+  </li>
 )
 
 export default pokemonIndexItem; 
