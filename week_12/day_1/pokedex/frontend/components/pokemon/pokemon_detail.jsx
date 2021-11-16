@@ -1,8 +1,16 @@
 import React from "react";
 
 
-const pokemonDetail = () => (
-    
-);
+class PokemonDetail{
+    constructor(props){
+        super(props)
+    }
 
-export default pokemonDetail; 
+    render () {
+        return (
+            <p>{this.props.pokeState}</p> 
+        )
+    }
+};
+
+export default PokemonDetail; 
