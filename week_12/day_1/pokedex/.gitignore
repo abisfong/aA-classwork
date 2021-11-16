@@ -19,3 +19,4 @@
 .byebug_history
 
 **/*lock*
+**/bundle*
