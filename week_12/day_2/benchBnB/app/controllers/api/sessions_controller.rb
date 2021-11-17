@@ -21,7 +21,6 @@ class Api::SessionsController < ApplicationController
     else
     # Log them in and redirect them if we find them
       login!(@user)
-      redirect_to user_url(@user)
     end
 
   end
